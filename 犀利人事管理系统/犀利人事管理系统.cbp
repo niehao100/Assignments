@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="犀利人事管理系统" />
+		<Option pch_mode="2" />
+		<Option compiler="gnu_gcc_x64" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/犀利人事管理系统" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/犀利人事管理系统" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Os" />
+					<Add option="-O3" />
+					<Add option="-std=c++11" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="employee.cpp" />
+		<Unit filename="employee.h" />
+		<Unit filename="manager.cpp" />
+		<Unit filename="manager.h" />
+		<Unit filename="salemanager.cpp" />
+		<Unit filename="salemanager.h" />
+		<Unit filename="salesman.cpp" />
+		<Unit filename="salesman.h" />
+		<Unit filename="technician.cpp" />
+		<Unit filename="technician.h" />
+		<Unit filename="池雨泽-2012011064.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
