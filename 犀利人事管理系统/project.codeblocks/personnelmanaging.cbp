@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="犀利人事管理系统" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/犀利人事管理系统" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/犀利人事管理系统" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Os" />
+					<Add option="-O3" />
+					<Add option="-std=c++11" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../codes/classes/employee.cpp" />
+		<Unit filename="../codes/classes/employee.h" />
+		<Unit filename="../codes/classes/manager.cpp" />
+		<Unit filename="../codes/classes/manager.h" />
+		<Unit filename="../codes/classes/salemanager.cpp" />
+		<Unit filename="../codes/classes/salemanager.h" />
+		<Unit filename="../codes/classes/salesman.cpp" />
+		<Unit filename="../codes/classes/salesman.h" />
+		<Unit filename="../codes/classes/technician.cpp" />
+		<Unit filename="../codes/classes/technician.h" />
+		<Unit filename="../codes/main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

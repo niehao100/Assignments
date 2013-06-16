@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1371394600 source:e:\documents\github\assignments\犀利人事管理系统\codes\classes\employee.cpp
+	<iostream>
+	"employee.h"
+
+1371394600 e:\documents\github\assignments\犀利人事管理系统\codes\classes\employee.h
+
+1371393680 source:e:\documents\github\assignments\犀利人事管理系统\codes\classes\manager.cpp
+	<iostream>
+	"manager.h"
+
+1371394922 e:\documents\github\assignments\犀利人事管理系统\codes\classes\manager.h
+	"employee.h"
+
+1370574300 source:e:\documents\github\assignments\犀利人事管理系统\codes\classes\salemanager.cpp
+	<iostream>
+	<vector>
+	"salemanager.h"
+
+1370531207 e:\documents\github\assignments\犀利人事管理系统\codes\classes\salemanager.h
+	"manager.h"
+	"salesman.h"
+
+1370531208 e:\documents\github\assignments\犀利人事管理系统\codes\classes\salesman.h
+	"employee.h"
+
+1370574300 source:e:\documents\github\assignments\犀利人事管理系统\codes\classes\salesman.cpp
+	<iostream>
+	"salesman.h"
+
+1370574494 source:e:\documents\github\assignments\犀利人事管理系统\codes\classes\technician.cpp
+	<iostream>
+	"technician.h"
+
+1370531208 e:\documents\github\assignments\犀利人事管理系统\codes\classes\technician.h
+	"employee.h"
+
+1371394601 source:e:\documents\github\assignments\犀利人事管理系统\codes\main.cpp
+	<cstdlib>
+	<cstring>
+	<ctime>
+	<fstream>
+	<iostream>
+	<sstream>
+	<vector>
+	<conio.h>
+	"classes\manager.h"
+	"classes\technician.h"
+	"classes\salesman.h"
+	"classes\salemanager.h"
+

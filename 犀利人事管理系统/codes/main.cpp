@@ -1,3 +1,9 @@
+/*
+ *  File Encoding: CP936/GBK
+ *  Chi Blaok @ EE THU, All Rights Reserved.
+ *
+ */
+
 #include<cstdlib>
 #include<cstring>
 #include<ctime>
@@ -9,10 +15,10 @@
 
 #include<conio.h>
 
-#include"manager.h"
-#include"technician.h"
-#include"salesman.h"
-#include"salemanager.h"
+#include"classes\manager.h"
+#include"classes\technician.h"
+#include"classes\salesman.h"
+#include"classes\salemanager.h"
 
 using namespace std;
 
@@ -61,14 +67,6 @@ inline void Wait()
 
 int main()
 {
-    #ifdef _MSC_VER
-    #include<cstdlib>
-    system("title GNU C++ please!");
-    cerr<<"全部代码使用Code::Blocks测试通过.\n如果出现问题请您首先考虑使用标准的GCC.\nAll codes tested in Code::Blocks with minGW successfully.\nIf anything goes wrong, consider standard GCC first.\n";
-    system("pause");
-    system("cls");
-    #endif
-
     system("title 犀利人事管理系统");
     cout<<"       00000000000000000000000000                   100          000\n       00000000000000000000000001              00000000          100\n       001                    00        00000000000000            00\n\
        001                    00         00000 000                00\n       00000000000000000000000001              000         000    00\n       00            000                       000         000    00\n       00    000     000      000              000         000    00\n       00    100000  000  00000001     000000000000000000  000    00\n       00        0   000   00          000000000000000000  000    00\n       00         0  000   0                   000         000    00\n       00  00000000  000  000000              00000        000    00\n       00   001               000            0000000       000    00\n      000      000   000                    0000000000     000    00\n      000     000    000                   1001000 0000    000    00\n      000    00000000000000000000          000 000  1000   000    00\n      00    000      000                 0000  000   1     000    00\n     000    00       000                0000   000         000    00\n     000             000               0000    000                00\n     00   0000000000000000000000000     00     000                00\n    000              000                       000                00\n   0000              000                       000               000\n    00               000                       000            000000\n                     000                       000            0000\n";
@@ -861,7 +859,7 @@ int LoadData(const char* filename)
                     ((Employee*)(object))->read_from(fin);
                     break;
                 case kManager:
-                    object=new Manager(false,false);
+                    object=new Manager(false);
                     ((Manager*)(object))->read_from(fin);
                     break;
                 case kSalemanager:

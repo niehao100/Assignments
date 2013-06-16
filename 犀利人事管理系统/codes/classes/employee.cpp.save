@@ -1,22 +1,10 @@
 #include<iostream>
 #include"employee.h"
 using namespace std;
-int Employee::counter(2013000);
-
-Employee::~Employee()
-{
-    clog<<"欢迎使用,再见No."<<individual_emp_no_<<".\n";
-}
+int Employee::counter(2013001);
 
 
-int Employee::accum_pay()
-{
-    return accum_pay_;
-}
-void Employee::promote(int pay,double percentage)
-{
-    accum_pay_=pay;
-}
+
 istream& Employee::read_from(std::istream& in_stream)
 {
     return in_stream
@@ -24,6 +12,7 @@ istream& Employee::read_from(std::istream& in_stream)
         .read((char*)(&grade_),sizeof(grade_))
         .read((char*)(&accum_pay_),sizeof(accum_pay_));
 }
+
 ostream& Employee::write_to(std::ostream& out_stream)
 {
     return out_stream
