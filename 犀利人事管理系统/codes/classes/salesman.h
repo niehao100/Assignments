@@ -1,3 +1,9 @@
+/*
+ *  File Encoding: CP936/GBK
+ *  Chi Blaok @ EE THU, All Rights Reserved.
+ *
+ */
+
 #ifndef SALESMAN_H_
 #define SALESMAN_H_
 

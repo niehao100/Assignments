@@ -1,3 +1,9 @@
+/*
+ *  File Encoding: CP936/GBK
+ *  Chi Blaok @ EE THU, All Rights Reserved.
+ *
+ */
+
 #ifndef TECHNICIAN_H_
 #define TECHNICIAN_H_
 
@@ -6,6 +12,7 @@
 class Technician:virtual public Employee
 {
 public:
+    //去掉人数限制提示
     Technician(int working_hours=0,bool add=true);
     ~Technician(){}
 
@@ -28,8 +35,6 @@ protected:
     static const unsigned char grade_[7];
     int working_hours_;
     int kHourPay;
-private:
-    static int technician_counter;
 };
 
 #endif//TECHNICIAN_H_

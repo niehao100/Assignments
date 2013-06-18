@@ -3,10 +3,8 @@
  *  Chi Blaok @ EE THU, All Rights Reserved.
  *
  */
- 
+
 #include<cstdlib>
-#include<cstring>
-#include<ctime>
 
 #include<fstream>
 #include<iostream>
@@ -15,157 +13,13 @@
 
 #include<conio.h>
 
-#include"classes\manager.h"
-#include"classes\technician.h"
-#include"classes\salesman.h"
-#include"classes\salemanager.h"
+#include"utilities.h"
 
 using namespace std;
 
-enum Type
-{
-    kEmployee=1,
-    kManager=2,
-    kSalemanager=3,
-    kSalesman=4,
-    kTechnician=5
-}read_type;
-
-struct Object
-{
-    Type type;
-    void* pointer;
-}object_struct;
-
-int Input();
-int Modify();
-int Search();
-
-int LoadData(const char* filename="save.dat");
-int SaveData(const char* filename="save.dat");
-
-vector<Object> data;
-typedef vector<Object> Data;
-
-inline void Pause()
-{
-    fflush(stdin);
-    cin.clear();
-    cin.sync();
-    getch();
-
-}
-inline void Wait()
-{
-    fflush(stdin);
-    cin.clear();
-    cin.sync();
-    time_t start,current;
-    time(&start);
-    for(time(&current);current-start<1.0;time(&current));
-}
-
-int main()
-{
-    system("title 犀利人事管理系统");
-    cout<<"       00000000000000000000000000                   100          000\n       00000000000000000000000001              00000000          100\n       001                    00        00000000000000            00\n\
-       001                    00         00000 000                00\n       00000000000000000000000001              000         000    00\n       00            000                       000         000    00\n       00    000     000      000              000         000    00\n       00    100000  000  00000001     000000000000000000  000    00\n       00        0   000   00          000000000000000000  000    00\n       00         0  000   0                   000         000    00\n       00  00000000  000  000000              00000        000    00\n       00   001               000            0000000       000    00\n      000      000   000                    0000000000     000    00\n      000     000    000                   1001000 0000    000    00\n      000    00000000000000000000          000 000  1000   000    00\n      00    000      000                 0000  000   1     000    00\n     000    00       000                0000   000         000    00\n     000             000               0000    000                00\n     00   0000000000000000000000000     00     000                00\n    000              000                       000                00\n   0000              000                       000               000\n    00               000                       000            000000\n                     000                       000            0000\n";
-    if(LoadData())
-    {
-        Pause();
-        return -1;
-    }
-    Wait();
-    Wait();
-    for(;;)
-    {
-        system("cls");
-        cout<<"               #,  #=  #:      #                             #\n                #  ##  #       #                             #\n                #  ##  #  ###  #  W##:  ###  Y=## ##B  ###   #\n                # # B ,R #   # #  #  # #   # I#  #  # #   #  #\n                :Y#  ##  ##### # #     #   # I;  #  # #####  #\n                 ##  ##  #     # iB  ; #   # I;  #  # #\n                 #   ##   #,#V #  #RB#  #:#i I+  #  #  #,#X .#\n";
-        cout<<"请选择欲使用的功能:\n";
-        cout<<"    1.数据录入\n";
-        cout<<"    2.数据修改\n";
-        cout<<"    3.数据查询\n";
-        cout<<"    Q.退出\n";
-
-        fflush(stdin);
-        switch(getch())
-        {
-        case '1':
-            Input();
-            break;
-        case '2':
-            Modify();
-            break;
-        case '3':
-            Search();
-            break;
-        case 'Q':case 'q':
-            SaveData();
-            for(Data::iterator iter=data.begin();iter!=data.end();++iter)
-            {
-                switch(iter->type)
-                {
-                case kEmployee:
-                    delete ((Employee*)(iter->pointer));
-                    break;
-                case kManager:
-                    delete ((Manager*)(iter->pointer));
-                    break;
-                case kSalemanager:
-                    delete ((Salemanager*)(iter->pointer));
-                    break;
-                case kSalesman:
-                    delete ((Salesman*)(iter->pointer));
-                    break;
-                case kTechnician:
-                    delete ((Technician*)(iter->pointer));
-                    break;
-                default:
-                    cerr<<"数据结构错误。\n";
-                    Pause();
-                    break;
-                }
-            }
-            cout<<"感谢您的使用，再见。\n";
-            Wait();
-            system("cls");
-            return 0;
-        default:
-            cerr<<"对不起，输入错误；请重新输入。";
-            Wait();
-            break;
-        }
-        fflush(stdin);
-    }
-    SaveData();
-    for(Data::iterator iter=data.begin();iter!=data.end();++iter)
-    {
-        switch(iter->type)
-        {
-        case kEmployee:
-            delete ((Employee*)(iter->pointer));
-            break;
-        case kManager:
-            delete ((Manager*)(iter->pointer));
-            break;
-        case kSalemanager:
-            delete ((Salemanager*)(iter->pointer));
-            break;
-        case kSalesman:
-            delete ((Salesman*)(iter->pointer));
-            break;
-        case kTechnician:
-            delete ((Technician*)(iter->pointer));
-            break;
-        default:
-            cerr<<"数据结构错误。\n";
-            Pause();
-            break;
-        }
-    }
-    system("cls");
-    return 0;
-}
+Data data;
+Type read_type;
+Object object_struct;
 
 int Input()
 {
@@ -381,7 +235,7 @@ int Modify()
         cin.sync();
         system("cls");
         cout<<"               #,  #=  #:      #                             #\n                #  ##  #       #                             #\n                #  ##  #  ###  #  W##:  ###  Y=## ##B  ###   #\n                # # B ,R #   # #  #  # #   # I#  #  # #   #  #\n                :Y#  ##  ##### # #     #   # I;  #  # #####  #\n                 ##  ##  #     # iB  ; #   # I;  #  # #\n                 #   ##   #,#V #  #RB#  #:#i I+  #  #  #,#X .#\n";
-        cout<<"请选择欲修改的员工编号:\n";
+        cout<<"请选择欲使用的功能;输入其他字符可以开始输入工号:\n";
         cout<<"    D.显示当前所有员工\n";
         cout<<"    B.返回主菜单\n";
         char choice;
@@ -690,7 +544,7 @@ int Search()
         cin.sync();
         system("cls");
         cout<<"               #,  #=  #:      #                             #\n                #  ##  #       #                             #\n                #  ##  #  ###  #  W##:  ###  Y=## ##B  ###   #\n                # # B ,R #   # #  #  # #   # I#  #  # #   #  #\n                :Y#  ##  ##### # #     #   # I;  #  # #####  #\n                 ##  ##  #     # iB  ; #   # I;  #  # #\n                 #   ##   #,#V #  #RB#  #:#i I+  #  #  #,#X .#\n";
-        cout<<"请选择欲查询的员工编号:\n";
+        cout<<"请选择欲使用的功能;输入其他字符可以开始输入工号:\n";
         cout<<"    D.显示当前所有员工\n";
         cout<<"    B.返回主菜单\n";
         char choice;
@@ -829,6 +683,51 @@ int Search()
     return 0;
 }
 
+int Statistic()
+{
+    int employee_counter=0,
+        manager_counter=0,
+        salemanager_counter=0,
+        salesman_counter=0,
+        technician_counter=0;
+    for(Data::iterator iter=data.begin();iter!=data.end();++iter)
+    {
+        switch(iter->type)
+        {
+        case kEmployee:
+            ++employee_counter;
+            break;
+        case kManager:
+            ++manager_counter;
+            break;
+        case kSalemanager:
+            ++salemanager_counter;
+            break;
+        case kSalesman:
+            ++salesman_counter;
+            break;
+        case kTechnician:
+            ++technician_counter;
+            break;
+        default:
+            cerr<<"数据结构错误。\n";
+            cerr<<"类型标识:"<<hex<<(iter->type)<<endl;
+            return -1;
+        }
+    }
+    cin.clear();
+    cin.sync();
+    system("cls");
+    cout<<"               #,  #=  #:      #                             #\n                #  ##  #       #                             #\n                #  ##  #  ###  #  W##:  ###  Y=## ##B  ###   #\n                # # B ,R #   # #  #  # #   # I#  #  # #   #  #\n                :Y#  ##  ##### # #     #   # I;  #  # #####  #\n                 ##  ##  #     # iB  ; #   # I;  #  # #\n                 #   ##   #,#V #  #RB#  #:#i I+  #  #  #,#X .#\n";
+    cout<<"统计结果如下:\n"
+        <<"    Employee:    "<<employee_counter<<endl
+        <<"    Manager:     "<<manager_counter<<endl
+        <<"    Salemanager: "<<salemanager_counter<<endl
+        <<"    Salesman:    "<<salesman_counter<<endl
+        <<"    Technician:  "<<technician_counter<<endl;
+    Pause();
+    return 0;
+}
 
 int LoadData(const char* filename)
 {

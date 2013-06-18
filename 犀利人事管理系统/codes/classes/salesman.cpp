@@ -1,3 +1,9 @@
+/*
+ *  File Encoding: CP936/GBK
+ *  Chi Blaok @ EE THU, All Rights Reserved.
+ *
+ */
+
 #include<iostream>
 #include"salesman.h"
 using namespace std;

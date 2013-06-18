@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
@@ -47,8 +47,6 @@
 		<Unit filename="../codes/classes/technician.cpp" />
 		<Unit filename="../codes/classes/technician.h" />
 		<Unit filename="../codes/main.cpp" />
-		<Unit filename="../codes/utilities.cpp" />
-		<Unit filename="../codes/utilities.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

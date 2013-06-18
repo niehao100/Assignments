@@ -36,17 +36,19 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="../../codes/classes/employee.cpp" />
-		<Unit filename="../../codes/classes/employee.h" />
-		<Unit filename="../../codes/classes/manager.cpp" />
-		<Unit filename="../../codes/classes/manager.h" />
-		<Unit filename="../../codes/classes/salemanager.cpp" />
-		<Unit filename="../../codes/classes/salemanager.h" />
-		<Unit filename="../../codes/classes/salesman.cpp" />
-		<Unit filename="../../codes/classes/salesman.h" />
-		<Unit filename="../../codes/classes/technician.cpp" />
-		<Unit filename="../../codes/classes/technician.h" />
-		<Unit filename="../../codes/main.cpp" />
+		<Unit filename="../codes/classes/employee.cpp" />
+		<Unit filename="../codes/classes/employee.h" />
+		<Unit filename="../codes/classes/manager.cpp" />
+		<Unit filename="../codes/classes/manager.h" />
+		<Unit filename="../codes/classes/salemanager.cpp" />
+		<Unit filename="../codes/classes/salemanager.h" />
+		<Unit filename="../codes/classes/salesman.cpp" />
+		<Unit filename="../codes/classes/salesman.h" />
+		<Unit filename="../codes/classes/technician.cpp" />
+		<Unit filename="../codes/classes/technician.h" />
+		<Unit filename="../codes/main.cpp" />
+		<Unit filename="../codes/utilities.cpp" />
+		<Unit filename="../codes/utilities.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

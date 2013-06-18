@@ -12,7 +12,7 @@
 class Manager:virtual public Employee
 {
 public:
-    //取消了经理人数的限制
+    //取消人数限制提示
     Manager(bool add=true);
     ~Manager(){}
 
