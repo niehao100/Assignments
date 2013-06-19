@@ -25,6 +25,7 @@ int Input();
 int Modify();
 int Search();
 int Statistic();
+int Delete();
 
 int LoadData(const char* filename="save.dat");
 int SaveData(const char* filename="save.dat");

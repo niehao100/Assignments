@@ -42,7 +42,8 @@ int main()
         cout<<"    1.数据录入\n";
         cout<<"    2.数据修改\n";
         cout<<"    3.数据查询\n";
-        cout<<"    4.数据统计\n";
+        cout<<"    4.数据删除\n";
+        cout<<"    5.数据统计\n";
         cout<<"    Q.退出\n";
 
         fflush(stdin);
@@ -58,6 +59,9 @@ int main()
             Search();
             break;
         case '4':
+            Delete();
+            break;
+        case '5':
             Statistic();
             break;
         case 'Q':case 'q':

@@ -729,6 +729,87 @@ int Statistic()
     return 0;
 }
 
+int Delete()
+{
+    cin.clear();
+    cin.sync();
+    system("cls");
+    cout<<"               #,  #=  #:      #                             #\n                #  ##  #       #                             #\n                #  ##  #  ###  #  W##:  ###  Y=## ##B  ###   #\n                # # B ,R #   # #  #  # #   # I#  #  # #   #  #\n                :Y#  ##  ##### # #     #   # I;  #  # #####  #\n                 ##  ##  #     # iB  ; #   # I;  #  # #\n                 #   ##   #,#V #  #RB#  #:#i I+  #  #  #,#X .#\n";
+    cout<<"请输入欲删除的员工编号:\n";
+    int num=0;
+    cin>>num;
+    if(cin.fail())
+    {
+        cerr<<"对不起，输入错误；请重新输入。";
+        Wait();
+        return -1;
+    }
+    int found=0;
+    for(Data::iterator iter=data.begin();iter!=data.end();++iter)
+    {
+        int emp_no=0;
+        switch(iter->type)
+        {
+        case kEmployee:
+            emp_no=((Employee*)(iter->pointer))->individual_emp_no();
+            break;
+        case kManager:
+            emp_no=((Manager*)(iter->pointer))->individual_emp_no();
+            break;
+        case kSalemanager:
+            emp_no=((Salemanager*)(iter->pointer))->individual_emp_no();
+            break;
+        case kSalesman:
+            emp_no=((Salesman*)(iter->pointer))->individual_emp_no();
+            break;
+        case kTechnician:
+            emp_no=((Technician*)(iter->pointer))->individual_emp_no();
+            break;
+        default:
+            cerr<<"数据结构错误。\n";
+            cerr<<"类型标识:"<<hex<<(iter->type)<<endl;
+            return -1;
+        }
+        if(emp_no==num)
+        {
+            delete (Employee*)(iter->pointer);
+            data.erase(iter);
+            ++found;
+        }
+        if(iter==data.end())
+        {
+            break;
+        }
+    }
+    if(found>0)
+    {
+        if(found>1)
+        {
+            cerr<<"工号重复。请检查数据结构。\n";
+            Wait();
+            return -3;
+        }
+        else
+        {
+            cout<<"删除成功。\n";
+            Wait();
+            return 0;
+        }
+    }
+    else
+    {
+        if(found==0)
+        {
+            cerr<<"未找到相应的数据。\n";
+            Wait();
+            return -1;
+        }
+    }
+    cerr<<"未知错误。\n";
+    Wait();
+    return -4;
+}
+
 int LoadData(const char* filename)
 {
     ifstream fin(filename,ios::binary|ios::app|ios::in);

@@ -3,7 +3,7 @@
 	<iostream>
 	"employee.h"
 
-1371394600 e:\documents\github\assignments\犀利人事管理系统\codes\classes\employee.h
+1371610677 e:\documents\github\assignments\犀利人事管理系统\codes\classes\employee.h
 
 1371394922 source:e:\documents\github\assignments\犀利人事管理系统\codes\classes\manager.cpp
 	<iostream>
@@ -35,7 +35,7 @@
 1371556296 e:\documents\github\assignments\犀利人事管理系统\codes\classes\technician.h
 	"employee.h"
 
-1371561442 source:e:\documents\github\assignments\犀利人事管理系统\codes\main.cpp
+1371609546 source:e:\documents\github\assignments\犀利人事管理系统\codes\main.cpp
 	<cstdlib>
 	<cstring>
 	<iostream>
@@ -47,7 +47,7 @@
 	"classes\salemanager.h"
 	"utilities.h"
 
-1371561382 e:\documents\github\assignments\犀利人事管理系统\codes\utilities.h
+1371608777 e:\documents\github\assignments\犀利人事管理系统\codes\utilities.h
 	<cstdio>
 	<cstdlib>
 	<ctime>
@@ -59,8 +59,12 @@
 	"classes\salesman.h"
 	"classes\salemanager.h"
 
-1371561264 source:e:\documents\github\assignments\犀利人事管理系统\codes\utilities.cpp
+1371610413 source:e:\documents\github\assignments\犀利人事管理系统\codes\utilities.cpp
+	<cstdlib>
 	<fstream>
+	<iostream>
 	<sstream>
+	<vector>
+	<conio.h>
 	"utilities.h"
 
