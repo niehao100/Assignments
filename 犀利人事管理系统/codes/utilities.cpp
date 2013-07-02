@@ -724,7 +724,12 @@ int Statistic()
         <<"    Manager:     "<<manager_counter<<endl
         <<"    Salemanager: "<<salemanager_counter<<endl
         <<"    Salesman:    "<<salesman_counter<<endl
-        <<"    Technician:  "<<technician_counter<<endl;
+        <<"    Technician:  "<<technician_counter<<endl
+        <<"×Ü¼Æ:            "<<employee_counter+
+                               manager_counter+
+                               salemanager_counter+
+                               salesman_counter+
+                               technician_counter<<endl;
     Pause();
     return 0;
 }

@@ -1,0 +1,74 @@
+# depslib dependency file v1.0
+1372655144 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\score.cpp
+	<cstring>
+	"score.h"
+	"user.h"
+
+1372494421 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\user.cpp
+	<cstring>
+	<set>
+	"user.h"
+
+1372587950 source:e:\documents\github\assignments\学生成绩管理系统\codes\main.cpp
+	<cerrno>
+	<cstdlib>
+	<cstdio>
+	<ctime>
+	<iostream>
+	<conio.h>
+	<windows.h>
+	"classes/admin.h"
+	"classes/score.h"
+	"classes/student.h"
+	"classes/teacher.h"
+	"classes/user.h"
+
+1372587886 e:\documents\github\assignments\学生成绩管理系统\codes\classes\user.h
+	<cstdint>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<ctime>
+	<set>
+	<conio.h>
+	<windows.h>
+
+1372655062 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.cpp
+	<cstring>
+	"student.h"
+
+1372487334 e:\documents\github\assignments\学生成绩管理系统\codes\classes\score.h
+	<cstdint>
+	<cstdlib>
+
+1372592376 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\teacher.cpp
+	<cstring>
+	"teacher.h"
+
+1372507198 e:\documents\github\assignments\学生成绩管理系统\codes\classes\teacher.h
+	"user.h"
+
+1372507198 e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.h
+	<cstdlib>
+	<vector>
+	"score.h"
+	"user.h"
+
+1372657061 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.cpp
+	<cerrno>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<ctime>
+	"admin.h"
+	"score.h"
+	"student.h"
+	"teacher.h"
+	"user.h"
+
+1372507219 e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.h
+	"score.h"
+	"student.h"
+	"teacher.h"
+	"user.h"
+
