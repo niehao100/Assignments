@@ -89,5 +89,7 @@ size_t Student::ReadFrom(const char* buffer,size_t size)
 
 int Student::Login()
 {
+    printf("!!!!!");
+    Pause();
     return 0;
 }

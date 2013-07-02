@@ -9,7 +9,7 @@
 	<set>
 	"user.h"
 
-1372587950 source:e:\documents\github\assignments\学生成绩管理系统\codes\main.cpp
+1372776563 source:e:\documents\github\assignments\学生成绩管理系统\codes\main.cpp
 	<cerrno>
 	<cstdlib>
 	<cstdio>
@@ -54,7 +54,7 @@
 	"score.h"
 	"user.h"
 
-1372657061 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.cpp
+1372778440 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.cpp
 	<cerrno>
 	<cstdio>
 	<cstdlib>

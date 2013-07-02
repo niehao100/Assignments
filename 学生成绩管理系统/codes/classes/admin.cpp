@@ -459,7 +459,23 @@ int Admin::Manage()
                         Pause();
                         break;
                     }
-                    GenerateRandomPassword(random_password);
+                    if(random_password[0]=='\n')
+                    {
+                        GenerateRandomPassword(random_password);
+                    }
+                    else
+                    {
+                        for(int i=0;i<21;++i)
+                        {
+                            if(random_password[21-1-i]=='\n')
+                            {
+                                random_password[21-1-i]='\0';
+                                break;
+                            }
+                        }
+
+                    }
+
                     output_file=fopen("initial_password.of.txt","a+");
                     time(&time_ptr);
                     switch(t_or_s)
@@ -502,7 +518,288 @@ int Admin::Manage()
             }
             break;
         case'2':    //修改用户信息
+            for(bool stop=false;!stop;)
+            {
+                system("cls");
+                printf("*******************************您的身份是:管理员********************************");
+                printf("请选择要修改的项目:\n    1.修改用户姓名\n    2.修改用户编号\n    3.重置用户密码\n    4.以用户身份登录\n    B.返回上一层菜单\n    Q.退出程序\n");
 
+                char choice=getch();
+                uint64_t input_id=0,new_id=0;
+                char input_name[MAX_NAME_LENGTH];
+                char random_password[21];
+                FILE* output_file=NULL;
+                time_t time_ptr;
+
+
+                switch(choice)
+                {
+                case'1':    //修改用户姓名
+                    printf("请输入用户编号:");
+                    if(scanf("%llu",&input_id)==0)
+                    {
+                        printf("输入错误。");
+                        Wait();
+                        break;
+                    }
+                    if(ferror(stdin))
+                    {
+                        perror("Failed to read the id");
+                        Pause();
+                        break;
+                    }
+
+                    if(admin_id_set_.count(input_id)==0)
+                    {
+                        printf("编号不存在。");
+                        Wait();
+                        Wait();
+                        break;
+                    }
+                    else
+                    {
+                        printf("    请注意，用户名重复将可能导致无法使用姓名登录系统，届时只能使用编号登录。\n请输入新的用户名:");
+                        fflush(stdin);
+                        if(fgets(input_name,MAX_NAME_LENGTH,stdin)==NULL)
+                        {
+                            perror("Failed to read the name");
+                            Pause();
+                            break;
+                        }
+
+                        for(int i=0;i<MAX_NAME_LENGTH;++i)      //fgets会将换行读进去
+                        {
+                            if(input_name[MAX_NAME_LENGTH-1-i]=='\n')
+                            {
+                                input_name[MAX_NAME_LENGTH-1-i]='\0';
+                                break;
+                            }
+                        }
+
+                        if(FindTeacher(input_id)!=NULL)
+                        {
+                            strcpy(FindTeacher(input_id)->name_,input_name);
+                            printf("修改成功。");
+                            Wait();
+                            break;
+                        }
+                        if(FindStudent(input_id)!=NULL)
+                        {
+                            strcpy(FindStudent(input_id)->name_,input_name);
+                            printf("修改成功。");
+                            Wait();
+                            break;
+                        }
+                        break;
+                    }
+                    break;
+                case'2':    //修改用户编号
+                    printf("请输入用户原有的编号:");
+                    if(scanf("%llu",&input_id)==0)
+                    {
+                        printf("输入错误。");
+                        Wait();
+                        break;
+                    }
+                    if(ferror(stdin))
+                    {
+                        perror("Failed to read the id");
+                        Pause();
+                        break;
+                    }
+
+                    if(admin_id_set_.count(input_id)==0)
+                    {
+                        printf("编号不存在。");
+                        Wait();
+                        Wait();
+                        break;
+                    }
+                    else
+                    {
+                        printf("    请注意，编号不可以重复。\n请输入新的用户编号:");
+                        fflush(stdin);
+                        if(scanf("%llu",&new_id)==0)
+                        {
+                            printf("输入错误。");
+                            Wait();
+                            break;
+                        }
+                        if(ferror(stdin))
+                        {
+                            perror("Failed to read the id");
+                            Pause();
+                            break;
+                        }
+
+                        if(admin_id_set_.count(new_id)!=0)
+                        {
+                            printf("编号重复。");
+                            Wait();
+                            Wait();
+                            break;
+                        }
+                        else
+                        {
+
+                            if(FindTeacher(input_id)!=NULL)
+                            {
+                                Teacher* teacher_ptr=FindTeacher(input_id);
+                                User::id_set_.erase(teacher_ptr->id_);
+                                admin_id_set_.erase(teacher_ptr->id_);
+                                teacher_ptr->id_=new_id;
+                                User::id_set_.insert(teacher_ptr->id_);
+                                admin_id_set_.insert(teacher_ptr->id_);
+                                printf("修改成功。");
+                                Wait();
+                                break;
+                            }
+                            if(FindStudent(input_id)!=NULL)
+                            {
+                                Student* student_ptr=FindStudent(input_id);
+                                User::id_set_.erase(student_ptr->id_);
+                                admin_id_set_.erase(student_ptr->id_);
+                                student_ptr->id_=new_id;
+                                User::id_set_.insert(student_ptr->id_);
+                                admin_id_set_.insert(student_ptr->id_);
+                                printf("修改成功。");
+                                Wait();
+                                break;
+                            }
+                            break;
+                        }
+                        break;
+                    }
+                    break;
+
+                case'3':    //重置用户密码
+                    printf("请输入用户编号:");
+                    if(scanf("%llu",&input_id)==0)
+                    {
+                        printf("输入错误。");
+                        Wait();
+                        break;
+                    }
+                    if(ferror(stdin))
+                    {
+                        perror("Failed to read the id");
+                        Pause();
+                        break;
+                    }
+
+                    if(admin_id_set_.count(input_id)==0)
+                    {
+                        printf("编号不存在。");
+                        Wait();
+                        Wait();
+                        break;
+                    }
+                    else
+                    {
+                        printf("请输入密码，直接回车则使用随机初始化密码:");
+                        fflush(stdin);
+                        if(fgets(random_password,21,stdin)==NULL)
+                        {
+                            perror("Unexpected input error");
+                            Pause();
+                            break;
+                        }
+                        if(random_password[0]=='\n')
+                        {
+                            GenerateRandomPassword(random_password);
+                        }
+                        else
+                        {
+                            for(int i=0;i<21;++i)
+                            {
+                                if(random_password[21-1-i]=='\n')
+                                {
+                                    random_password[21-1-i]='\0';
+                                    break;
+                                }
+                            }
+
+                        }
+
+                        output_file=fopen("initial_password.of.txt","a+");
+                        time(&time_ptr);
+
+                        printf("已保存。\n");
+                        //保存至initial_password.of.txt
+                        if(FindTeacher(input_id)!=NULL)
+                        {
+                            fprintf(output_file,"%s\t%llu\t%s\n",FindTeacher(input_id)->name_,input_id,random_password);
+                            fprintf(output_file,"Generated @ %s\n",ctime(&time_ptr));
+                            Wait();
+                        }
+                        if(FindStudent(input_id)!=NULL)
+                        {
+                            fprintf(output_file,"%s\t%llu\t%s\n",FindStudent(input_id)->name_,input_id,random_password);
+                            fprintf(output_file,"Generated @ %s\n",ctime(&time_ptr));
+                            Wait();
+                        }
+
+                        fclose(output_file);
+                    }
+                    break;
+
+                case'4':    //以用户身份登录
+                    printf("请输入用户编号:");
+                    if(scanf("%llu",&input_id)==0)
+                    {
+                        printf("输入错误。");
+                        Wait();
+                        break;
+                    }
+                    if(ferror(stdin))
+                    {
+                        perror("Failed to read the id");
+                        Pause();
+                        break;
+                    }
+
+                    if(admin_id_set_.count(input_id)==0)
+                    {
+                        printf("编号不存在。");
+                        Wait();
+                        Wait();
+                        break;
+                    }
+                    else
+                    {
+                        if(FindTeacher(input_id)!=NULL)
+                        {
+                            FindTeacher(input_id)->Login();
+                            break;
+                        }
+                        if(FindStudent(input_id)!=NULL)
+                        {
+                            FindStudent(input_id)->Login();
+                            break;
+                        }
+                        break;
+                    }
+                    break;
+                case'B':case'b':case 27:
+                    stop=true;
+                    break;
+                case'Q':case'q':
+                    extern bool go_on;
+                    go_on=false;
+                    return 0;
+                default:
+                    printf("输入错误。");
+                    Wait();
+                    break;
+                }
+
+
+
+
+
+
+
+            }
 
 
 

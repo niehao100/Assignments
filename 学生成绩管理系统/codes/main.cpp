@@ -105,7 +105,7 @@ int main()
         printf("****************************欢迎使用学生成绩管理系统****************************");
         char login_name[20]={'\0'};     //19位是uint64_t类型的上限
         char password_char[25]={'\0'};  //24字节密码经过Hash变为64位整数储存
-        printf("请输入您的姓名或学号:");
+        printf("请输入您的姓名或编号:");
         fgets(login_name,20,stdin);
         for(int i=0;i<20;++i)
         {
