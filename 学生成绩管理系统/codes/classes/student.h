@@ -7,6 +7,8 @@
 #include"score.h"
 #include"user.h"
 
+class Admin;
+
 class Student:virtual public User
 {
 public:
@@ -17,7 +19,11 @@ public:
     virtual size_t WriteTo(char* buffer,size_t size);
     virtual size_t ReadFrom(const char* buffer,size_t size);
 
-    int Login();
+    int Login(Admin* admin);
+
+    friend class Teacher;
+    friend class Admin;
+
 protected:
     std::vector<Score> score_vector_;
 };

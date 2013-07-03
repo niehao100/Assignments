@@ -87,7 +87,7 @@ size_t Student::ReadFrom(const char* buffer,size_t size)
     return MAX_NAME_LENGTH+sizeof(uint64_t)*2+sizeof(size_t)+sizeof(Score)*score_vector_size;
 }
 
-int Student::Login()
+int Student::Login(Admin* admin)
 {
     printf("!!!!!");
     Pause();

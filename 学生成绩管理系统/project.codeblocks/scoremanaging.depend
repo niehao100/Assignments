@@ -1,15 +1,15 @@
 # depslib dependency file v1.0
-1372655144 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\score.cpp
+1372867969 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\score.cpp
 	<cstring>
 	"score.h"
 	"user.h"
 
-1372494421 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\user.cpp
+1372867947 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\user.cpp
 	<cstring>
 	<set>
 	"user.h"
 
-1372776563 source:e:\documents\github\assignments\学生成绩管理系统\codes\main.cpp
+1372861709 source:e:\documents\github\assignments\学生成绩管理系统\codes\main.cpp
 	<cerrno>
 	<cstdlib>
 	<cstdio>
@@ -23,7 +23,7 @@
 	"classes/teacher.h"
 	"classes/user.h"
 
-1372587886 e:\documents\github\assignments\学生成绩管理系统\codes\classes\user.h
+1372867948 e:\documents\github\assignments\学生成绩管理系统\codes\classes\user.h
 	<cstdint>
 	<cstdio>
 	<cstdlib>
@@ -33,28 +33,29 @@
 	<conio.h>
 	<windows.h>
 
-1372655062 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.cpp
+1372867976 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.cpp
 	<cstring>
 	"student.h"
 
-1372487334 e:\documents\github\assignments\学生成绩管理系统\codes\classes\score.h
+1372863966 e:\documents\github\assignments\学生成绩管理系统\codes\classes\score.h
 	<cstdint>
 	<cstdlib>
 
-1372592376 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\teacher.cpp
+1372867198 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\teacher.cpp
 	<cstring>
+	"admin.h"
 	"teacher.h"
 
-1372507198 e:\documents\github\assignments\学生成绩管理系统\codes\classes\teacher.h
+1372860936 e:\documents\github\assignments\学生成绩管理系统\codes\classes\teacher.h
 	"user.h"
 
-1372507198 e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.h
+1372864150 e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.h
 	<cstdlib>
 	<vector>
 	"score.h"
 	"user.h"
 
-1372778440 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.cpp
+1372867948 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.cpp
 	<cerrno>
 	<cstdio>
 	<cstdlib>

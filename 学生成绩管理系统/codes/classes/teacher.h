@@ -11,6 +11,9 @@ public:
     virtual size_t WriteTo(char* buffer,size_t size);
     virtual size_t ReadFrom(const char* buffer,size_t size);
 
-    int Login();
+    int Login(Admin* admin);
+
+    friend class Student;
+    friend class Admin;
 };
 #endif // TEACHER_H_

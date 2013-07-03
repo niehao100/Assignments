@@ -19,7 +19,8 @@ using namespace std;
 bool go_on=true;
 int main()
 {
-    system("title 学生成绩管理系统\ncls");
+    system("title 学生成绩管理系统");
+    system("cls");
     Sleep(200);
     for(int i=0;i<12;++i)
     {
@@ -211,7 +212,7 @@ int main()
                                 }
                                 continue;
                             }
-                            student->Login();
+                            student->Login(admin);
                             continue;
                         }
                     }
@@ -228,7 +229,7 @@ int main()
                             }
                             continue;
                         }
-                        teacher->Login();
+                        teacher->Login(admin);
                         continue;
                     }
                 }
@@ -272,7 +273,7 @@ int main()
                     }
                     continue;
                 }
-                student->Login();
+                student->Login(admin);
                 continue;
             }
         }
@@ -289,7 +290,7 @@ int main()
                 }
                 continue;
             }
-            teacher->Login();
+            teacher->Login(admin);
             continue;
         }
         printf("用户名或密码不正确；按Q键退出，或按其他键重新输入。\n");
@@ -306,6 +307,8 @@ int main()
     admin->WriteTo(buffer,size);
     fwrite(buffer,1,size,read_data);
     fclose(read_data);
+    printf("正在保存...\r");
+    Wait();
     delete[] buffer;                //NOTE:delete:buffer
     printf("感谢您的使用，再见!");
 

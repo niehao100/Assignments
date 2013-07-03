@@ -39,12 +39,16 @@ public:
     bool Identify(const char* password);
     virtual size_t WriteTo(char* buffer,size_t size)=0;
     virtual size_t ReadFrom(const char* buffer,size_t size)=0;
-    static std::set<uint64_t>::size_type Count(uint64_t val){return id_set_.count(val);}
 
+    friend class Teacher;
+    friend class Student;
+    friend class Admin;
+    friend int main();
+
+protected:
     char name_[MAX_NAME_LENGTH];    //不允许超长；空为出错
     uint64_t id_;                   //0x0保留
     uint64_t hash_;                 //散列后的密码
-    static std::set<uint64_t> id_set_;
 };
 
 inline uint64_t Hash(const char* password_char)

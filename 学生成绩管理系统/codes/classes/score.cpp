@@ -16,25 +16,23 @@ Score::Score(const char* subject,double mark,uint64_t teacher)
     }
     else
     {
-        if(User::Count(teacher)==0)
-        {
-            subject_[0]='\0';
-            strcpy(subject_+1,"TEACHER_DOES_NOT_EXIST");
-            mark_=0;
-            teacher_=0;
-        }
-        else
-        {
-            strcpy(subject_,subject);
-            mark_=mark;
-            teacher_=teacher;
-        }
+        strcpy(subject_,subject);
+        mark_=mark;
+        teacher_=teacher;
     }
 }
 
 Score::Score(const char* buffer,size_t size)
 {
     ReadFrom(buffer,size);
+}
+
+Score::Score(const Score& score):mark_(score.mark_),teacher_(score.teacher_)
+{
+    for(size_t i=0;i<MAX_SUBJECT_NAME_LENGTH;++i)
+    {
+        subject_[i]=score.subject_[i];
+    }
 }
 
 Score::~Score(){}

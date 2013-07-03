@@ -645,10 +645,8 @@ int Admin::Manage()
                             if(FindTeacher(input_id)!=NULL)
                             {
                                 Teacher* teacher_ptr=FindTeacher(input_id);
-                                User::id_set_.erase(teacher_ptr->id_);
                                 admin_id_set_.erase(teacher_ptr->id_);
                                 teacher_ptr->id_=new_id;
-                                User::id_set_.insert(teacher_ptr->id_);
                                 admin_id_set_.insert(teacher_ptr->id_);
                                 printf("修改成功。");
                                 Wait();
@@ -657,10 +655,8 @@ int Admin::Manage()
                             if(FindStudent(input_id)!=NULL)
                             {
                                 Student* student_ptr=FindStudent(input_id);
-                                User::id_set_.erase(student_ptr->id_);
                                 admin_id_set_.erase(student_ptr->id_);
                                 student_ptr->id_=new_id;
-                                User::id_set_.insert(student_ptr->id_);
                                 admin_id_set_.insert(student_ptr->id_);
                                 printf("修改成功。");
                                 Wait();
@@ -769,12 +765,12 @@ int Admin::Manage()
                     {
                         if(FindTeacher(input_id)!=NULL)
                         {
-                            FindTeacher(input_id)->Login();
+                            FindTeacher(input_id)->Login(this);
                             break;
                         }
                         if(FindStudent(input_id)!=NULL)
                         {
-                            FindStudent(input_id)->Login();
+                            FindStudent(input_id)->Login(this);
                             break;
                         }
                         break;
@@ -792,45 +788,183 @@ int Admin::Manage()
                     Wait();
                     break;
                 }
-
-
-
-
-
-
-
             }
-
-
-
-
-
-
-
-
             break;
         case'3':    //删除已有用户
+            for(;;)
+            {
+                uint64_t input_id=0;
 
-
-
-
-
-
-
-
-
+                printf("请输入用户编号:");
+                if(scanf("%llu",&input_id)==0)
+                {
+                    printf("输入错误。");
+                    Wait();
+                    break;
+                }
+                if(ferror(stdin))
+                {
+                    perror("Failed to read the id");
+                    Pause();
+                    break;
+                }
+                fflush(stdin);
+                if(admin_id_set_.count(input_id)==0)
+                {
+                    printf("编号不存在。");
+                    Wait();
+                    Wait();
+                    break;
+                }
+                else
+                {
+                    if(DeleteTeacher(input_id)||DeleteStudent(input_id))
+                    {
+                        printf("删除成功。");
+                        Wait();
+                        break;
+                    }
+                    else
+                    {
+                        perror("Unexpected result");
+                        Pause();
+                        break;
+                    }
+                }
+            }
             break;
+
         case'4':    //修改管理员登录密码
+            {
+                printf("请输入原来的密码:");
+                char password_char[25]={'\0'};  //24字节密码经过Hash变为64位整数储存
+                for(int i=0;i<24;++i)
+                {
+                    char get=getch();
+                    switch(get)
+                    {
+                    case'\r':
+                        password_char[i]='\0';
+                        i=24;
+                        putch('\n');
+                        Wait();
+                        break;
+                    case 8:
+                        if(i>0)
+                        {
+                            putch(8);
+                            putch(0);
+                            putch(8);
+                            --i;
+                        }
+                        --i;
+                        break;
+                    default:
+                        if(get>=0x20&&get<=0x7E)
+                        {
+                            putch('*');
+                            password_char[i]=get;
+                        }
+                        else
+                        {
+                            --i;
+                        }
+                    }
+                }
+                if(Hash(password_char)!=hash_)
+                {
+                    printf("密码错误。");
+                    Wait();
+                    break;
+                }
 
+                printf("请输入新的密码:");
+                for(int i=0;i<24;++i)
+                {
+                    char get=getch();
+                    switch(get)
+                    {
+                    case'\r':
+                        password_char[i]='\0';
+                        i=24;
+                        putch('\n');
+                        break;
+                    case 8:
+                        if(i>0)
+                        {
+                            putch(8);
+                            putch(0);
+                            putch(8);
+                            --i;
+                        }
+                        --i;
+                        break;
+                    default:
+                        if(get>=0x20&&get<=0x7E)
+                        {
+                            putch('*');
+                            password_char[i]=get;
+                        }
+                        else
+                        {
+                            --i;
+                        }
+                    }
+                }
+                printf("请再次输入密码以确认:");
+                char password_check[25]={'\0'};  //24字节密码经过Hash变为64位整数储存
+                for(int i=0;i<24;++i)
+                {
+                    char get=getch();
+                    switch(get)
+                    {
+                    case'\r':
+                        password_check[i]='\0';
+                        i=24;
+                        putch('\n');
+                        break;
+                    case 8:
+                        if(i>0)
+                        {
+                            putch(8);
+                            putch(0);
+                            putch(8);
+                            --i;
+                        }
+                        --i;
+                        break;
+                    default:
+                        if(get>=0x20&&get<=0x7E)
+                        {
+                            putch('*');
+                            password_check[i]=get;
+                        }
+                        else
+                        {
+                            --i;
+                        }
+                    }
+                }
+                if(strcmp(password_char,password_check)==0)
+                {
+                    hash_=Hash(password_char);
+                    printf("密码修改成功。");
+                    Wait();
+                    break;
+                }
+                else
+                {
+                    printf("两次输入的密码不符。");
+                    Wait();
+                    Wait();
+                    break;
+                }
+                break;
+            }
 
-
-
-
-
-
-            break;
         case'B':case'b':case 27:
             return 0;
+
         case'Q':case'q':
             extern bool go_on;
             go_on=false;
@@ -838,7 +972,7 @@ int Admin::Manage()
         }
     }
 
-
+    perror("Unexpected result");
     Pause();
 
     return 0;
