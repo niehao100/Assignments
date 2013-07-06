@@ -1,4 +1,7 @@
 #include<cstring>
+#include<cstdio>
+
+#include<windows.h>
 
 #include"admin.h"
 #include"teacher.h"
@@ -15,6 +18,10 @@ size_t Teacher::WriteTo(char* buffer,size_t size)
     if(buffer==NULL)
     {
         return MAX_NAME_LENGTH+sizeof(uint64_t)*2;
+    }
+    if(MAX_NAME_LENGTH+sizeof(uint64_t)*2>size)
+    {
+        return 0;
     }
 
     strcpy(buffer,name_);
@@ -77,7 +84,7 @@ int Teacher::Login(Admin* admin)
             init=false; //只显示一次欢迎信息;
         }
         putchar('\r');
-        printf("请选择欲使用的功能:\n    1.录入学生成绩;\n    2.修改学生成绩;\n    3.删除学生成绩;\n    4.修改登录密码\n    B.退出登录\n    Q.退出程序\n");
+        printf("请选择欲使用的功能:\n    1.录入学生成绩\n    2.修改学生成绩\n    3.删除学生成绩\n    4.修改登录密码\n    B.退出登录\n    Q.退出程序\n");
         char choice=getch();
 
         switch(choice)
@@ -101,12 +108,12 @@ int Teacher::Login(Admin* admin)
                 printf("********************************您的身份是:教师*********************************");
 
                 size_t star_num=80-10*2-strlen(input_subject);
-                for(int i=0;i<star_num/2;++i)
+                for(size_t i=0;i<star_num/2;++i)
                 {
                     putchar('=');
                 }
                 printf("现在您录入的是%s的成绩",input_subject);
-                for(int i=star_num/2;i<star_num;++i)
+                for(size_t i=star_num/2;i<star_num;++i)
                 {
                     putchar('=');
                 }
@@ -257,11 +264,199 @@ int Teacher::Login(Admin* admin)
 
         case'3':    //删除学生成绩
         {
+            uint64_t input_id=GetId("请输入学生编号:");
+            if(admin->FindStudent(input_id)==NULL)
+            {
+                printf("学号未找到。");
+                Wait();
+                break;
+            }
+            else
+            {
+                Student* student=admin->FindStudent(input_id);
+                vector<Score> found;
+                for(vector<Score>::iterator iter=student->score_vector_.begin();iter!=student->score_vector_.end();++iter)
+                {
+                    if(iter->teacher_==id_)
+                    {
+                        found.push_back(*iter);
+                    }
+                }
+                if(found.empty())
+                {
+                    printf("该学生的记录中没有您录入的成绩。");
+                    Wait();
+                    break;
+                }
+                else
+                {
+                    for(size_t i=0;i<found.size();++i)
+                    {
+                        printf("%4u.\t科目:%s\t分数:%g\n",i+1,found[i].subject_,found[i].mark_);
+                    }
+                    size_t sub=0;
+                    printf("请选择要删去的科目:");
+                    if(scanf("%u",&sub)==0||sub==0||sub>found.size())
+                    {
+                        printf("输入错误。");
+                        Wait();
+                        break;
+                    }
+                    else
+                    {
+                        for(vector<Score>::iterator iter=student->score_vector_.begin();iter!=student->score_vector_.end();++iter)
+                        {
+                            if(strcmp(iter->subject_,found[sub-1].subject_)==0)
+                            {
+                                student->score_vector_.erase(iter);
+                                printf("成功删除科目 %s 。",found[sub-1].subject_);
+                                Wait();
+                                Wait();
+                                if(iter==student->score_vector_.end())
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        break;
+                    }
+                    break;
+
+                }
+                break;
+
+            }
             break;
+
         }
 
         case'4':    //修改登录密码
         {
+            printf("请输入原来的密码:");
+            char password_char[25]={'\0'};
+            for(int i=0;i<24;++i)
+            {
+                char get=getch();
+                switch(get)
+                {
+                case'\r':
+                    password_char[i]='\0';
+                    i=24;
+                    putch('\n');
+                    Wait();
+                    break;
+                case 8:
+                    if(i>0)
+                    {
+                        putch(8);
+                        putch(0);
+                        putch(8);
+                        --i;
+                    }
+                    --i;
+                    break;
+                default:
+                    if(get>=0x20&&get<=0x7E)
+                    {
+                        putch('*');
+                        password_char[i]=get;
+                    }
+                    else
+                    {
+                        --i;
+                    }
+                }
+            }
+            if(Hash(password_char)!=hash_)
+            {
+                printf("密码错误。");
+                Wait();
+                Wait();
+                break;
+            }
+
+            printf("请输入新的密码:");
+            for(int i=0;i<24;++i)
+            {
+                char get=getch();
+                switch(get)
+                {
+                case'\r':
+                    password_char[i]='\0';
+                    i=24;
+                    putch('\n');
+                    break;
+                case 8:
+                    if(i>0)
+                    {
+                        putch(8);
+                        putch(0);
+                        putch(8);
+                        --i;
+                    }
+                    --i;
+                    break;
+                default:
+                    if(get>=0x20&&get<=0x7E)
+                    {
+                        putch('*');
+                        password_char[i]=get;
+                    }
+                    else
+                    {
+                        --i;
+                    }
+                }
+            }
+            printf("请再次输入密码以确认:");
+            char password_check[25]={'\0'};  //24字节密码经过Hash变为64位整数储存
+            for(int i=0;i<24;++i)
+            {
+                char get=getch();
+                switch(get)
+                {
+                case'\r':
+                    password_check[i]='\0';
+                    i=24;
+                    putch('\n');
+                    break;
+                case 8:
+                    if(i>0)
+                    {
+                        putch(8);
+                        putch(0);
+                        putch(8);
+                        --i;
+                    }
+                    --i;
+                    break;
+                default:
+                    if(get>=0x20&&get<=0x7E)
+                    {
+                        putch('*');
+                        password_check[i]=get;
+                    }
+                    else
+                    {
+                        --i;
+                    }
+                }
+            }
+            if(strcmp(password_char,password_check)==0)
+            {
+                hash_=Hash(password_char);
+                printf("密码修改成功。");
+                Wait();
+                Wait();
+                break;
+            }
+            else
+            {
+                printf("两次输入的密码不符。");
+                Wait();
+                Wait();
+                break;
+            }
             break;
         }
 

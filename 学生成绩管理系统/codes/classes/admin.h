@@ -8,7 +8,7 @@ class Admin:virtual public Student,virtual public Teacher
 {
 public:
     Admin(uint64_t password):
-        User(NULL,0,password),Student(NULL,0,password,std::vector<Score>()),Teacher(NULL,0,password){}
+        User(NULL,0,password),Student(NULL,0,password,std::vector<Score>()),Teacher(NULL,0,password),teacher_vector_(),student_vector_(),admin_id_set_(){}
     Admin(const char* buffer,size_t size);
     ~Admin(){};
     virtual size_t WriteTo(char* buffer,size_t size);

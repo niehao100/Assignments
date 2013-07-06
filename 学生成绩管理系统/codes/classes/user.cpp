@@ -7,14 +7,12 @@
 using namespace std;
 
 
-User::User(const char* name,uint64_t id,uint64_t password)
+User::User(const char* name,uint64_t id,uint64_t password):id_(id),hash_(password)
 {
     if(name==NULL)
     {
         name_[0]='\0';
         strcpy(name_+1,"NAME_IS_NULL");
-        id_=id;
-        hash_=password;
         return;
     }
     if(strlen(name)>=MAX_NAME_LENGTH)
@@ -36,8 +34,6 @@ User::User(const char* name,uint64_t id,uint64_t password)
         else
         {
             strcpy(name_,name);
-            id_=id;
-            hash_=password;
 
         }
     }

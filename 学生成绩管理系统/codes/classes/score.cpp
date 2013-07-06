@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Score::Score(const char* subject,double mark,uint64_t teacher)
+Score::Score(const char* subject,double mark,uint64_t teacher):mark_(mark),teacher_(teacher)
 {
     if(strlen(subject)>=MAX_SUBJECT_NAME_LENGTH)
     {
@@ -22,7 +22,7 @@ Score::Score(const char* subject,double mark,uint64_t teacher)
     }
 }
 
-Score::Score(const char* buffer,size_t size)
+Score::Score(const char* buffer,size_t size):mark_(),teacher_()
 {
     ReadFrom(buffer,size);
 }

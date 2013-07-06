@@ -23,9 +23,7 @@ inline uint64_t GenerateRandomPassword(char pwd[21])
 }
 
 Admin::Admin(const char* buffer,size_t size):
-    User(NULL,0,0),
-    Student(NULL,0,0,vector<Score>()),
-    Teacher(NULL,0,0)
+    User(NULL,0,0),Student(NULL,0,0,vector<Score>()),Teacher(NULL,0,0),teacher_vector_(),student_vector_(),admin_id_set_()
 {
     if(ReadFrom(buffer,size)==0)
     {
@@ -60,6 +58,10 @@ size_t Admin::WriteTo(char* buffer,size_t size)
     }
     else
     {
+        if(sizeof(uint64_t)+sizeof(vector<Teacher>::size_type)+teacher_vector_.size()*(sizeof(size_t))+student_vector_.size()*(sizeof(size_t))>size)
+        {
+            return 0;
+        }
         for(size_t i=0;i<sizeof(uint64_t);++i)
         {
             buffer[i]=((char*)(&hash_))[i];
@@ -272,7 +274,7 @@ int Admin::Manage()
             init=false; //只显示一次欢迎信息;
         }
         putchar('\r');
-        printf("请选择欲使用的功能:\n    1.添加用户;\n    2.修改用户信息;\n    3.删除已有用户;\n    4.修改管理员登录密码\n    B.退出登录\n    Q.退出程序\n");
+        printf("请选择欲使用的功能:\n    1.添加用户\n    2.修改用户信息\n    3.删除已有用户\n    4.修改管理员登录密码\n    B.退出登录\n    Q.退出程序\n");
         char choice=getch();
 
         switch(choice)

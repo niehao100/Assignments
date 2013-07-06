@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="..\codes\classes\teacher.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\codes\classes\teacher.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="199" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="..\codes\classes\user.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\codes\classes\user.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1223" topLine="49" />
+			<Cursor1 position="473" topLine="23" />
 		</Cursor>
 	</File>
-	<File name="..\codes\classes\student.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\codes\classes\user.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="533" topLine="18" />
-		</Cursor>
-	</File>
-	<File name="..\codes\classes\student.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="522" topLine="2" />
-		</Cursor>
-	</File>
-	<File name="..\codes\classes\teacher.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1297" topLine="49" />
-		</Cursor>
-	</File>
-	<File name="..\codes\classes\admin.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="669" topLine="15" />
-		</Cursor>
-	</File>
-	<File name="..\codes\classes\user.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1438" topLine="41" />
-		</Cursor>
-	</File>
-	<File name="..\codes\classes\score.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1060" topLine="40" />
-		</Cursor>
-	</File>
-	<File name="..\codes\classes\admin.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="30065" topLine="754" />
-		</Cursor>
-	</File>
-	<File name="..\codes\classes\score.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="139" topLine="0" />
+			<Cursor1 position="745" topLine="33" />
 		</Cursor>
 	</File>
 	<File name="..\codes\main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="10156" topLine="306" />
+			<Cursor1 position="5952" topLine="187" />
+		</Cursor>
+	</File>
+	<File name="..\codes\classes\admin.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4778" topLine="169" />
+		</Cursor>
+	</File>
+	<File name="..\codes\classes\score.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="195" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="..\codes\classes\score.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="432" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="..\codes\classes\student.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1977" topLine="78" />
+		</Cursor>
+	</File>
+	<File name="..\codes\classes\teacher.cpp" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9007" topLine="260" />
+		</Cursor>
+	</File>
+	<File name="..\codes\classes\student.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="579" topLine="10" />
+		</Cursor>
+	</File>
+	<File name="..\codes\classes\admin.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1224" topLine="19" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

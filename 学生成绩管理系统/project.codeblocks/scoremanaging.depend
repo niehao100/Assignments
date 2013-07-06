@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1372867969 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\score.cpp
+1372931132 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\score.cpp
 	<cstring>
 	"score.h"
 	"user.h"
 
-1372867947 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\user.cpp
+1372931073 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\user.cpp
 	<cstring>
 	<set>
 	"user.h"
@@ -33,7 +33,7 @@
 	<conio.h>
 	<windows.h>
 
-1372867976 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.cpp
+1372931836 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.cpp
 	<cstring>
 	"student.h"
 
@@ -41,8 +41,10 @@
 	<cstdint>
 	<cstdlib>
 
-1372867198 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\teacher.cpp
+1373113289 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\teacher.cpp
 	<cstring>
+	<cstdio>
+	<windows.h>
 	"admin.h"
 	"teacher.h"
 
@@ -55,7 +57,7 @@
 	"score.h"
 	"user.h"
 
-1372867948 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.cpp
+1373113289 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.cpp
 	<cerrno>
 	<cstdio>
 	<cstdlib>
@@ -67,7 +69,7 @@
 	"teacher.h"
 	"user.h"
 
-1372507219 e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.h
+1372930488 e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.h
 	"score.h"
 	"student.h"
 	"teacher.h"
