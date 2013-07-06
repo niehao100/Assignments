@@ -10,24 +10,32 @@
 				<Option output="bin/Debug/学生成绩管理系统" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
-				<Option compiler="gcc" />
+				<Option compiler="tdm64_gcc_compiler" />
 				<Compiler>
-					<Add option="-std=c++11" />
-					<Add option="-Wall" />
+					<Add option="-Weffc++" />
+					<Add option="-pedantic" />
+					<Add option="-Wfatal-errors" />
+					<Add option="-Wextra" />
 					<Add option="-g" />
+					<Add option="-m32" />
 				</Compiler>
+				<Linker>
+					<Add option="-m32" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/学生成绩管理系统" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
-				<Option compiler="gcc" />
+				<Option compiler="tdm64_gcc_compiler" />
 				<Compiler>
-					<Add option="-O2" />
-					<Add option="-std=c++11" />
+					<Add option="-Os" />
+					<Add option="-O3" />
+					<Add option="-m32" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-m32" />
 				</Linker>
 			</Target>
 		</Build>

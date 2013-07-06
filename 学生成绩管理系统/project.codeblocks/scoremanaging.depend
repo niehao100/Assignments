@@ -33,8 +33,9 @@
 	<conio.h>
 	<windows.h>
 
-1372931836 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.cpp
+1373113455 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.cpp
 	<cstring>
+	"admin.h"
 	"student.h"
 
 1372863966 e:\documents\github\assignments\学生成绩管理系统\codes\classes\score.h
