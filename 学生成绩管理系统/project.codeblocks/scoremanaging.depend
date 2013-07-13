@@ -9,7 +9,7 @@
 	<set>
 	"user.h"
 
-1372861709 source:e:\documents\github\assignments\学生成绩管理系统\codes\main.cpp
+1373177641 source:e:\documents\github\assignments\学生成绩管理系统\codes\main.cpp
 	<cerrno>
 	<cstdlib>
 	<cstdio>
@@ -33,7 +33,7 @@
 	<conio.h>
 	<windows.h>
 
-1373113455 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.cpp
+1373180791 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\student.cpp
 	<cstring>
 	"admin.h"
 	"student.h"
@@ -42,7 +42,7 @@
 	<cstdint>
 	<cstdlib>
 
-1373113289 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\teacher.cpp
+1373180791 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\teacher.cpp
 	<cstring>
 	<cstdio>
 	<windows.h>
@@ -58,7 +58,7 @@
 	"score.h"
 	"user.h"
 
-1373113289 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.cpp
+1373180791 source:e:\documents\github\assignments\学生成绩管理系统\codes\classes\admin.cpp
 	<cerrno>
 	<cstdio>
 	<cstdlib>

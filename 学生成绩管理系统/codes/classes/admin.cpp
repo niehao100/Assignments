@@ -78,14 +78,13 @@ size_t Admin::WriteTo(char* buffer,size_t size)
         for(vector<Teacher>::iterator iter=teacher_vector_.begin();iter!=teacher_vector_.end();++iter)
         {
             size_t write_size=iter->WriteTo(NULL,0);
-            for(size_t i=0;i<sizeof(size_t);++i)
+            for(size_t i=0;i<sizeof(write_size);++i)
             {
                 buffer[i]=((char*)(&write_size))[i];
             }
-            buffer+=sizeof(size_t);
+            buffer+=sizeof(write_size);
 
-            iter->WriteTo(buffer,iter->WriteTo(NULL,0));
-            buffer+=iter->WriteTo(NULL,0);
+            buffer+=iter->WriteTo(buffer,iter->WriteTo(NULL,0));
         }
 
         vector<Student>::size_type student_vector_size=student_vector_.size();
@@ -98,14 +97,13 @@ size_t Admin::WriteTo(char* buffer,size_t size)
         for(vector<Student>::iterator iter=student_vector_.begin();iter!=student_vector_.end();++iter)
         {
             size_t write_size=iter->WriteTo(NULL,0);
-            for(size_t i=0;i<sizeof(size_t);++i)
+            for(size_t i=0;i<sizeof(write_size);++i)
             {
                 buffer[i]=((char*)(&write_size))[i];
             }
-            buffer+=sizeof(size_t);
+            buffer+=sizeof(write_size);
 
-            iter->WriteTo(buffer,iter->WriteTo(NULL,0));
-            buffer+=iter->WriteTo(NULL,0);
+            buffer+=iter->WriteTo(buffer,iter->WriteTo(NULL,0));
         }
     }
     return buffer-buffer_init;
@@ -135,7 +133,7 @@ size_t Admin::ReadFrom(const char* buffer,size_t size)
     teacher_vector_.clear();
     for(size_t iter=0;iter<teacher_vector_size;++iter)
     {
-        size_t read_size;
+        size_t read_size=0;
         for(size_t i=0;i<sizeof(read_size);++i)
         {
             ((char*)(&read_size))[i]=buffer[i];
@@ -274,7 +272,7 @@ int Admin::Manage()
             init=false; //只显示一次欢迎信息;
         }
         putchar('\r');
-        printf("请选择欲使用的功能:\n    1.添加用户\n    2.修改用户信息\n    3.删除已有用户\n    4.修改管理员登录密码\n    B.退出登录\n    Q.退出程序\n");
+        printf("请选择欲使用的功能:                     \n    1.添加用户\n    2.修改用户信息\n    3.删除已有用户\n    4.修改管理员登录密码\n    B.退出登录\n    Q.退出程序\n");
         char choice=getch();
 
         switch(choice)

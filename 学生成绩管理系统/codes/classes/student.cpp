@@ -107,7 +107,7 @@ int Student::Login(Admin* admin)
             init=false; //只显示一次欢迎信息;
         }
         putchar('\r');
-        printf("请选择欲使用的功能:\n    1.查询成绩\n    2.修改登录密码\n    B.退出登录\n    Q.退出程序\n");
+        printf("请选择欲使用的功能:                         \n    1.查询成绩\n    2.修改登录密码\n    B.退出登录\n    Q.退出程序\n");
         char choice=getch();
 
         switch(choice)

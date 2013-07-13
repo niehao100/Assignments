@@ -34,14 +34,14 @@ int main()
     system("cls");
 
     //读取数据结构
-    FILE* read_data=fopen("default.admin","r+");
+    FILE* read_data=fopen("default.admin","r+b");
     for(;read_data==NULL;)
     {
         if(errno==ENOENT)
         {
             printf("没有找到数据库文件\"default.admin\"，将创建空文件。");
-            fclose(fopen("default.admin","w"));
-            read_data=fopen("default.admin","r+");
+            fclose(fopen("default.admin","wb"));
+            read_data=fopen("default.admin","r+b");
             Wait();
             Wait();
             putchar('\r');
@@ -61,44 +61,20 @@ int main()
     }
     else
     {
-        long int size=ftell(read_data)-init_pos;
+        size_t size=ftell(read_data)-init_pos;
         char* buffer=new char[size];    //NOTE:new:buffer
         fseek(read_data,0,SEEK_SET);    //重置文件指针
-        fread(buffer,1,size,read_data);
+        size_t read_size=fread(buffer,1,size,read_data);
+        if(read_size!=size)
+        {
+            printf("Failed to read database.\n%d bytes should be read, but only %d bytes were read.",size,read_size);
+            Pause();
+            return -1;
+        }
         admin=new Admin(buffer,size);   //TODO:new:admin
         delete[] buffer;                //NOTE:delete:buffer
         fseek(read_data,0,SEEK_SET);    //重置文件指针
     }
-
-    /*//////////////////////////
-    Score score1("微积分",1,1);
-    vector<Score> score_vector1(1,score1);
-    score_vector1;
-    Student zhang_yue("张跃",2,1,score_vector1);
-    Teacher su_ning("苏宁",3,23);
-    //Admin* admin=new Admin(213);
-    admin->AddTeacher(su_ning);
-    admin->AddStudent(zhang_yue);
-    admin->AddTeacher(su_ning);
-    admin->AddStudent(zhang_yue);
-    admin->AddTeacher(su_ning);
-    admin->AddStudent(zhang_yue);
-    admin->AddTeacher(su_ning);
-    admin->AddStudent(zhang_yue);
-    admin->AddTeacher(su_ning);
-    admin->AddStudent(zhang_yue);
-    admin->AddTeacher(su_ning);
-    admin->AddStudent(zhang_yue);
-    char* buf=new char[admin->WriteTo(NULL,0)];
-    cout<<admin->WriteTo(NULL,0)<<endl;
-    cout<<admin->WriteTo(NULL,0)<<endl;
-    cout<<(admin->WriteTo(buf,admin->WriteTo(NULL,0)))<<endl;
-    cout<<admin->ReadFrom(buf,admin->WriteTo(NULL,0))<<endl;
-    cout<<(admin->teacher_vector_.begin()->name_);
-    //return 0;
-    //////////////////////////*/
-
-
 
     for(;go_on;)
     {
