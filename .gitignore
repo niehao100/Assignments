@@ -3,8 +3,8 @@
 #################
 *.save
 *.bak
-bin/
-obj/
+*/bin/*
+*/obj/*
 *.dat
 *.txt
 *.admin
