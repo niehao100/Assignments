@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1379858795 source:e:\blaok\works\assignments\4th.aut.2013\数据与算法\实验示例_2012011064_池雨泽\proj1\source\main.cpp
+	<cstdio>
+	<cstdlib>
+
+1379925247 source:e:\documents\github\assignments\数据与算法\大作业01\proj1\source\main.cpp
+	<cstdio>
+	<cstdlib>
+
+1380699246 source:e:\documents\github\assignments\数据与算法\大作业02\source\main.cpp
+	<cstdio>
+	<ctime>
+	"sparse_matrix.h"
+
+1380699184 source:e:\documents\github\assignments\数据与算法\大作业02\source\sparse_matrix.cpp
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	"sparse_matrix.h"
+
+1380642852 e:\documents\github\assignments\数据与算法\大作业02\source\sparse_matrix.h
+
+1380703681 source:e:\blaok\github\assignments\数据与算法\大作业02\source\main.cpp
+	<cstdio>
+	"sparse_matrix.h"
+
+1380642852 e:\blaok\github\assignments\数据与算法\大作业02\source\sparse_matrix.h
+
+1380703801 source:e:\blaok\github\assignments\数据与算法\大作业02\source\sparse_matrix.cpp
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	"sparse_matrix.h"
+
