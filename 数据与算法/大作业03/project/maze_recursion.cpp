@@ -149,7 +149,6 @@ bool SolveMaze(PriorQueue& queue)
                 kClosed==status[next->x][next->y].flag ||             //封闭
                 next->x<0 || next->y<0 || next->x>=m || next->y >= n)   //超出边界
             {
-                delete next;
                 continue;                                           //直接不予考虑
             }
 
@@ -178,7 +177,6 @@ bool SolveMaze(PriorQueue& queue)
             {                                                       //研究一下怎么走比较近
                 if(status[next->x][next->y].node_ptr->G<=next->G)   //原来的比较近
                 {
-                    delete next;
                     continue;   //那就不用管
                 }
                 else    //新找到的这个比较近
