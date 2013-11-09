@@ -106,6 +106,13 @@ int main()
 
 bool IsStronglyConnected(int** adjacency_matrix,int v)
 {
+    //高端大气的Tarjan看不懂啊，先写个简单的看看满足不满足要求
+    bool* v_read=new char[v]();
+    for(int i=1;i<v;++i)
+    {
+        ;
+    }
+    delete[] v_read;
     return true;
 }
 void PrintShortestPathMatrix(int** adjacency_matrix,int v,int** path)
