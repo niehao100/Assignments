@@ -1,4 +1,4 @@
-ï»¿#include<climits>
+#include<climits>
 #include<cstdio>
 using namespace std;
 bool IsStronglyConnected(int** adjacency_matrix,int v);
@@ -37,7 +37,7 @@ int main()
     
     int start=-1,end=-1;
     scanf("%d%d",&start,&end);
-    /********************************è¾“å…¥ç»“æŸ********************************/
+/********************************ÊäÈë½áÊø********************************/
     if(IsStronglyConnected(adjacency_matrix,v))
     {
         printf("1\n");
@@ -65,35 +65,7 @@ int main()
     {
         printf("0\n");
     }
-    /********************************è¾“å…¥ç»“æŸ********************************/
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-    for(int i=0;i<v;++i)
-    {
-        for(int j=0;j<v;++j)
-        {
-            printf("%3d",adjacency_matrix[i][j]);
-        }
-        putchar('\n');
-    }*/
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+/********************************Êä³ö½áÊø********************************/
     for(int i=0;i<v;++i)
     {
         delete[] adjacency_matrix[i];
@@ -104,16 +76,133 @@ int main()
     return 0;
 }
 
+class Stack
+{
+public:
+    typedef int ValueType;
+    struct Node
+    {
+        ValueType value;
+        Node* below;
+    };
+    Stack():top(NULL){}
+    ~Stack()
+    {
+        Clear();
+    }
+    void Clear()
+    {
+        for(;!(IsEmpty());)
+        {
+            Pop();
+        }
+    }
+    void Push(ValueType value)
+    {
+        Node* new_node=new Node;
+        new_node->value=value;
+        new_node->below=top;
+        top=new_node;
+    }
+    ValueType Pop()
+    {
+        if(NULL==top)
+        {
+            return -1;
+        }
+        ValueType return_value=top->value;
+        Node* next_top=top->below;
+        delete top;
+        top=next_top;
+        return return_value;
+    }
+    bool IsEmpty()
+    {
+        return NULL==top;
+    }
+    bool Contains(ValueType value)
+    {
+        for(Node* ptr=top;ptr!=NULL;ptr=ptr->below)
+        {
+            if(ptr->value==value)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+private:
+    Node* top;
+};
+static Stack tarjan_stack;
+static int tarjan_index=0; 
+static int tarjan_counter=0;
+static int** tarjan_adjacency_matrix=NULL;
+static bool* tarjan_visited_tag=NULL;
+static int tarjan_v=0;
+static int* tarjan_dfn=NULL;
+static int* tarjan_low=NULL;
+bool Tarjan(int current_vertex)
+{
+    tarjan_visited_tag[current_vertex]=true;
+    tarjan_dfn[current_vertex]=tarjan_low[current_vertex]=++tarjan_index;
+    tarjan_stack.Push(current_vertex);
+    for(int i=0;i<tarjan_v;++i)
+    {
+        if(i==current_vertex || 0==tarjan_adjacency_matrix[current_vertex][i])
+        {
+            continue;
+        }
+        if(tarjan_visited_tag[i]==false)
+        {
+            Tarjan(i);
+            tarjan_low[i]<tarjan_low[current_vertex] && (tarjan_low[current_vertex]=tarjan_low[i]);
+        }
+        else
+        {
+            if(tarjan_stack.Contains(i))
+            {
+            tarjan_low[i]<tarjan_low[current_vertex] && (tarjan_low[current_vertex]=tarjan_dfn[i]);
+            }
+        }
+    }
+    if(tarjan_dfn[current_vertex]==tarjan_low[current_vertex])
+    {
+        for(;;)
+        {
+            int scc_vertex=tarjan_stack.Pop();
+            ++tarjan_counter;
+            if(tarjan_counter==tarjan_v)
+            {
+                return true;
+            }
+            if(current_vertex==scc_vertex)
+            {
+                tarjan_counter=0;
+                break;
+            }
+        }
+    }
+    return false;
+}
 bool IsStronglyConnected(int** adjacency_matrix,int v)
 {
-    //é«˜ç«¯å¤§æ°”çš„Tarjançœ‹ä¸æ‡‚å•Šï¼Œå…ˆå†™ä¸ªç®€å•çš„çœ‹çœ‹æ»¡è¶³ä¸æ»¡è¶³è¦æ±‚
-    bool* v_read=new char[v]();
-    for(int i=1;i<v;++i)
-    {
-        ;
-    }
-    delete[] v_read;
-    return true;
+    tarjan_adjacency_matrix=adjacency_matrix;
+    tarjan_index=0;
+    tarjan_counter=0;
+    tarjan_v=v;
+    tarjan_visited_tag=new bool[v]();
+    tarjan_dfn=new int[v]();
+    tarjan_low=new int[v]();
+    bool return_value=Tarjan(0);
+    delete[] tarjan_low;
+    tarjan_low=NULL;
+    delete[] tarjan_dfn;
+    tarjan_dfn=NULL;
+    delete[] tarjan_visited_tag;
+    tarjan_visited_tag=NULL;
+    tarjan_adjacency_matrix=NULL;
+    return return_value;
 }
 void PrintShortestPathMatrix(int** adjacency_matrix,int v,int** path)
 {
@@ -123,7 +212,7 @@ void PrintShortestPathMatrix(int** adjacency_matrix,int v,int** path)
         for(int j=0;j<v;++j)
         {
             weight_matrix[i*v+j]=(adjacency_matrix[i][j]==0 && i!=j)?INT_MAX:adjacency_matrix[i][j];
-            path[i][j]=weight_matrix[i*v+j]==INT_MAX ? -1 : j ;
+            path[i][j]=weight_matrix[i*v+j]==INT_MAX ? -1 : i ;
         }
     }
     
@@ -135,10 +224,10 @@ void PrintShortestPathMatrix(int** adjacency_matrix,int v,int** path)
             for(int j=0;j<v;++j)
             {
                 register int t=(weight_matrix[i*v+k]!=INT_MAX && weight_matrix[k*v+j]!=INT_MAX) ? weight_matrix[i*v+k]+weight_matrix[k*v+j] : INT_MAX; 
-                //tæš‚å­˜å¯èƒ½çš„è¾ƒå°æƒå€¼ï¼Œç”±äºintåŠ æ³•é‡åˆ°INT_MAXä¼šæº¢å‡ºå˜è´Ÿï¼Œå› æ­¤éœ€è¦ä¸€ä¸ªè¾ƒå¤æ‚çš„è¡¨è¾¾å¼
+                //tÔİ´æ¿ÉÄÜµÄ½ÏĞ¡È¨Öµ£¬ÓÉÓÚint¼Ó·¨Óöµ½INT_MAX»áÒç³ö±ä¸º£¬Òò´ËĞèÒªÒ»¸ö½Ï¸´ÔÓµÄ±í´ïÊ½
                 temp[i*v+j]=
                     weight_matrix[i*v+j]>t ? t : weight_matrix[i*v+j] ;
-                weight_matrix[i*v+j]>t && (path[i][j]=k);
+                weight_matrix[i*v+j]>t && (path[i][j]=path[k][j]);
             }
         }
         for(int i=0;i<v;++i)
@@ -166,8 +255,7 @@ void PrintShortestPathMatrix(int** adjacency_matrix,int v,int** path)
 }
 int PrintShortestPath(int** path,int start,int end,bool is_init)
 {
-    is_init && printf("%d ",start);
-    printf("%d ",path[start][end]);
-    path[start][end]!=end && PrintShortestPath(path,path[start][end],end,false);
+    path[start][end]!=end && PrintShortestPath(path,start,path[start][end],false);
+    printf("%d ",end);
     return 0;
 }
