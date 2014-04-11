@@ -1,0 +1,38 @@
+compile_options=-O3 -Os -std=c++11 -m32
+link_options=-static -m32
+
+default: task1 task2
+
+task1: task1.o 
+	g++ $(link_options) ../obj/task1.o -o ../exe/task1
+task1.o: task1.cpp
+	g++ $(compile_options) task1.cpp -c -o ../obj/task1.o
+	
+task2: task2.o 
+	g++ $(link_options) ../obj/task2.o -o ../exe/task2
+task2.o: task2.cpp
+	g++ $(compile_options) task2.cpp -c -o ../obj/task2.o
+
+.PHONY: main
+main: generate_task1  generate_task2
+	../exe/generate_task1 > task1.part.cpp
+	../exe/generate_task2 > task2.part.cpp
+	
+.PHONY: test
+test: test1  test2
+	"../exe/test2" > task2_test.log
+
+generate_task1: generate_task1.o
+	g++ $(link_options) ../obj/generate_task1.o -o ../exe/generate_task1
+generate_task1.o: generate_task1.cpp
+	g++ $(compile_options) generate_task1.cpp -c -o ../obj/generate_task1.o
+	
+generate_task2: generate_task2.o
+	g++ $(link_options) ../obj/generate_task2.o -o ../exe/generate_task2
+generate_task2.o: generate_task2.cpp
+	g++ $(compile_options) generate_task2.cpp -c -o ../obj/generate_task2.o
+
+.PHONY: clean
+clean:
+	rm -f ../exe/*
+	rm -f ../obj/*.o
