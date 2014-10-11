@@ -1,0 +1,4 @@
+NET "reset" LOC = "B8";  #BTNS
+NET "sysclk" LOC = "V10"; #100MHz Clock
+NET "uart_tx" LOC = "N18"; #TXD
+NET "uart_rx" LOC = "N17"; #RXD

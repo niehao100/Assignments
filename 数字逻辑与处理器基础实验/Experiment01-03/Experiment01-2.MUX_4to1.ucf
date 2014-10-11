@@ -1,0 +1,14 @@
+NET "cc[0]" LOC = "U16";    #LD0
+NET "c[0]" LOC = "T10";     #SW0
+NET "cc[1]" LOC = "V16";    #LD1
+NET "c[1]" LOC = "T9";      #SW1
+NET "cc[2]" LOC = "U15";    #LD2
+NET "c[2]" LOC = "V9";      #SW2
+NET "cc[3]" LOC = "V15";    #LD3
+NET "c[3]" LOC = "M8";      #SW3
+NET "ss[0]" LOC = "M11";    #LD4
+NET "s[0]" LOC = "N8";      #SW4
+NET "ss[1]" LOC = "N11";    #LD5
+NET "s[1]" LOC = "U8";      #SW5
+NET "y" LOC = "T11";        #LD7
+

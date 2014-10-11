@@ -1,0 +1,12 @@
+NET "x[0]" LOC = "T10"; #SW0
+NET "x[1]" LOC = "T9";  #SW1
+NET "x[2]" LOC = "V9";  #SW2
+NET "x[3]" LOC = "M8";  #SW3
+NET "a" LOC = "T17";    #CA
+NET "b" LOC = "T18";    #CB
+NET "c" LOC = "U17";    #CC
+NET "d" LOC = "U18";    #CD
+NET "e" LOC = "M14";    #CE
+NET "f" LOC = "N14";    #CF
+NET "g" LOC = "L14";    #CG
+

@@ -1,0 +1,13 @@
+NET "reset" LOC = "A8";  #BTNU
+NET "mode_confirm" LOC = "C9";  #BTND
+NET "mode_select" LOC = "B8";  #BTNS
+NET "mode_display[0]" LOC = "U16"; #LD0
+NET "mode_display[1]" LOC = "V16"; #LD1
+NET "data_wrong" LOC = "U15"; #LD2
+NET "out_enable" LOC = "V15"; #LD3
+NET "state[0]" LOC = "M11"; #LD4
+NET "state[1]" LOC = "N11"; #LD5
+NET "state[2]" LOC = "R11"; #LD6
+NET "state[3]" LOC = "T11"; #LD7
+NET "sysclk" LOC = "V10"; #100MHz Clock
+

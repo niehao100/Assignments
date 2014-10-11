@@ -1,0 +1,11 @@
+NET "a[0]" LOC = "T10"; #SW0
+NET "a[1]" LOC = "T9";  #SW1
+NET "a[2]" LOC = "V9";  #SW2
+NET "d[0]" LOC = "U16"; #LD0
+NET "d[1]" LOC = "V16"; #LD1
+NET "d[2]" LOC = "U15"; #LD2
+NET "d[3]" LOC = "V15"; #LD3
+NET "d[4]" LOC = "M11"; #LD4
+NET "d[5]" LOC = "N11"; #LD5
+NET "d[6]" LOC = "R11"; #LD6
+NET "d[7]" LOC = "T11"; #LD7

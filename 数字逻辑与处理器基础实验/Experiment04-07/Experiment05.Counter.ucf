@@ -1,0 +1,8 @@
+NET "clk" LOC = "B8";  #BTNS
+NET "count[0]" LOC = "U16"; #LD0
+NET "count[1]" LOC = "V16"; #LD1
+NET "count[2]" LOC = "U15"; #LD2
+NET "count[3]" LOC = "V15"; #LD3
+NET "reset" LOC = "T10"; #SW0
+NET "sysclk" LOC = "V10"; #100MHz Clock
+

@@ -1,0 +1,7 @@
+NET "aa" LOC = "U16";   #LD0
+NET "a" LOC = "T10";    #SW0
+NET "bb" LOC = "V16";   #LD1
+NET "b" LOC = "T9";     #SW1
+NET "ss" LOC = "U15";   #LD2
+NET "s" LOC = "V9";     #SW2
+NET "y" LOC = "T11";    #LD7

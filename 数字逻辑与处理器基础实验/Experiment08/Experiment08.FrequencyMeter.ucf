@@ -1,0 +1,18 @@
+NET "cathodes[7]" LOC = "T17"; #CA
+NET "cathodes[6]" LOC = "T18"; #CB
+NET "cathodes[5]" LOC = "U17"; #CC
+NET "cathodes[4]" LOC = "U18"; #CD
+NET "cathodes[3]" LOC = "M14"; #CE
+NET "cathodes[2]" LOC = "N14"; #CF
+NET "cathodes[1]" LOC = "L14"; #CG
+NET "cathodes[0]" LOC = "M13"; #DP
+NET "anodes[3]" LOC = "P17"; #AN3
+NET "anodes[2]" LOC = "P18"; #AN2
+NET "anodes[1]" LOC = "N15"; #AN1
+NET "anodes[0]" LOC = "N16"; #AN0
+NET "range_display" LOC = "T11"; #LD7
+NET "select[0]" LOC = "T10"; #SW0
+NET "select[1]" LOC = "T9";  #SW1
+NET "range" LOC = "T5";  #SW7
+NET "sysclk" LOC = "V10"; #100MHz Clock
+

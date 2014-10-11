@@ -1,0 +1,8 @@
+NET "reset" LOC = "A8";  #BTNU
+NET "clk" LOC = "B8";  #BTNS
+NET "out" LOC = "U16"; #LD0
+NET "fsm[0]" LOC = "N11"; #LD5
+NET "fsm[1]" LOC = "R11"; #LD6
+NET "fsm[2]" LOC = "T11"; #LD7
+NET "in" LOC = "T9"; #SW1
+NET "sysclk" LOC = "V10"; #100MHz Clock
